@@ -67,6 +67,8 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
 
+# E-GAWE : Event Management / Wedding Organizer
+
 Tisla Template : https://github.com/stisla/stisla
 
 Download Template : https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbFYwZmdPelZ4bjB5bXlWLXVFVkxnTnBfWS1yUXxBQ3Jtc0tsLVFWTjYxQ1BCUTAyOTNpYk9rbjJjVkl0NDJha1RTVnNfaS10REphODBZQmt1VVhmTHJCb3Uwbnh4eGhrek5QZWlfUHdCRmNrb3dybEFWZUdTdUxyTXdCb1dFaDhyMF9TQnFtYURZLUJSQXJGdlE4NA&q=https%3A%2F%2Fyukcoding.id%2Fdownload-koleksi-template-bootstrap-responsive-gratis%2F&v=Kre5kJIufhw
