@@ -7,14 +7,20 @@
     <title>Blank Page &mdash; Stisla</title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+
+    <!-- General CSS Files -->
+    <!-- E:\CI4\ci4-undangan\public\template\node_modules\@fortawesome\fontawesome-free\css -->
+    <!-- E:\CI4\ci4-undangan\public\template\node_modules\bootstrap\dist\css -->
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- CSS Libraries -->
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/components.css">
 </head>
 
 <body>
@@ -52,19 +58,19 @@
                             </div>
                             <div class="search-item">
                                 <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png" alt="product">
+                                    <img class="mr-3 rounded" width="30" src="<?= base_url() ?>/template/assets/img/products/product-3-50.png" alt="product">
                                     oPhone S9 Limited Edition
                                 </a>
                             </div>
                             <div class="search-item">
                                 <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png" alt="product">
+                                    <img class="mr-3 rounded" width="30" src="<?= base_url() ?>/template/assets/img/products/product-2-50.png" alt="product">
                                     Drone X2 New Gen-7
                                 </a>
                             </div>
                             <div class="search-item">
                                 <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png" alt="product">
+                                    <img class="mr-3 rounded" width="30" src="<?= base_url() ?>/template/assets/img/products/product-1-50.png" alt="product">
                                     Headphone Blitz
                                 </a>
                             </div>
@@ -101,7 +107,7 @@
                             <div class="dropdown-list-content dropdown-list-message">
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle">
+                                        <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle">
                                         <div class="is-online"></div>
                                     </div>
                                     <div class="dropdown-item-desc">
@@ -112,7 +118,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="../assets/img/avatar/avatar-2.png" class="rounded-circle">
+                                        <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-2.png" class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
                                         <b>Dedik Sugiharto</b>
@@ -122,7 +128,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="../assets/img/avatar/avatar-3.png" class="rounded-circle">
+                                        <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-3.png" class="rounded-circle">
                                         <div class="is-online"></div>
                                     </div>
                                     <div class="dropdown-item-desc">
@@ -133,7 +139,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="../assets/img/avatar/avatar-4.png" class="rounded-circle">
+                                        <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-4.png" class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
                                         <b>Ardian Rahardiansyah</b>
@@ -143,7 +149,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle">
+                                        <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-5.png" class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
                                         <b>Alfa Zulkarnain</b>
@@ -217,7 +223,7 @@
                         </div>
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -412,7 +418,7 @@
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+                    Copyright &copy; 2025 <div class="bullet"></div> Delevoper By <a href="https://nauval.in/">Mahpudin</a>
                 </div>
                 <div class="footer-right">
                     2.3.0
@@ -422,18 +428,23 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
+    <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
+
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
+    <script src="<?= base_url() ?>/template/assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
 </body>
