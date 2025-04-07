@@ -10,11 +10,18 @@
 <?= $this->section('content') ?>
 <section class="section">
     <div class="section-header">
-        <h1>Blank Page</h1>
+        <h1><?= $submenu ?></h1>
     </div>
 
     <div class="section-body">
         Halo Dunia
     </div>
 </section>
+
+<script>
+    function Logout() {
+        window.location.href = document.getElementById('logout').getAttribute('href');
+    }
+</script>
+
 <?= $this->endSection() ?>

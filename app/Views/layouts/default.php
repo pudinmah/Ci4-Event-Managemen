@@ -7,11 +7,6 @@
                             <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
                             <?= $this->renderSection('title') ?>
 
-
-                            <!-- General CSS Files -->
-                            <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-
                             <!-- General CSS Files -->
                             <!-- E:\CI4\ci4-undangan\public\template\node_modules\@fortawesome\fontawesome-free\css -->
                             <!-- E:\CI4\ci4-undangan\public\template\node_modules\bootstrap\dist\css -->
@@ -44,7 +39,7 @@
                                                             <a href="#">Mark All As Read</a>
                                                         </div>
                                                     </div>
-                                                    <div class="dropdown-list-content dropdown-list-message">   
+                                                    <div class="dropdown-list-content dropdown-list-message">
                                                         <a href="#" class="dropdown-item dropdown-item-unread">
                                                             <div class="dropdown-item-avatar">
                                                                 <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-3.png" class="rounded-circle">
@@ -142,22 +137,19 @@
                                                 </div>
                                             </li>
                                             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                                    <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                                                    <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                                                    <img alt="image" src="<?= base_url() ?>template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                                                    <div class="d-sm-none d-lg-inline-block">Hi, Mahpudin</div>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <div class="dropdown-title">Logged in 5 min ago</div>
                                                     <a href="features-profile.html" class="dropdown-item has-icon">
                                                         <i class="far fa-user"></i> Profile
                                                     </a>
-                                                    <a href="features-activities.html" class="dropdown-item has-icon">
-                                                        <i class="fas fa-bolt"></i> Activities
-                                                    </a>
                                                     <a href="features-settings.html" class="dropdown-item has-icon">
                                                         <i class="fas fa-cog"></i> Settings
                                                     </a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a href="#" class="dropdown-item has-icon text-danger">
+                                                    <a href="<?= site_url('auth/logout') ?>" class="dropdown-item has-icon text-danger" id="logout" data-confirm="Logout?|Yakin keluar aplikasi?" data-confirm-yes="Logout()">
                                                         <i class="fas fa-sign-out-alt"></i> Logout
                                                     </a>
                                                 </div>
@@ -167,10 +159,10 @@
                                     <div class="main-sidebar">
                                         <aside id="sidebar-wrapper">
                                             <div class="sidebar-brand">
-                                                <a href="<?=site_url()?>">yukNikah</a>
+                                                <a href="<?= site_url() ?>">yukNikah</a>
                                             </div>
                                             <div class="sidebar-brand sidebar-brand-sm">
-                                                <a href="<?=site_url()?>">yN</a>
+                                                <a href="<?= site_url() ?>">yN</a>
                                             </div>
                                             <ul class="sidebar-menu">
                                                 <!-- Including View Partials -->
@@ -209,12 +201,6 @@
                             <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
                             <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
 
-
-
-                            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-                            <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-                            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script> -->
-                            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
 
                             <!-- JS Libraies -->
 

@@ -16,7 +16,16 @@ $routes->get('create-db', function () {
 });
 
 
-$routes->get('/', 'Home::index');
+// Login
+$routes->get('login', 'Auth::login');
+$routes->post('auth/loginProcess', 'Auth::loginProcess');
+$routes->get('auth/logout', 'Auth::logout');
+
+
+// Home
+$routes->get('/home', 'Home::index');
+$routes->addRedirect('/', 'home');
+
 
 // Group Gawe
 $routes->group('gawe', function ($routes) {
