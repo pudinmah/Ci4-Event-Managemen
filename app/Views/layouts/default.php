@@ -5,7 +5,8 @@
                         <head>
                             <meta charset="UTF-8">
                             <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-                            <title>Blank Page &mdash; Stisla</title>
+                            <?= $this->renderSection('title') ?>
+
 
                             <!-- General CSS Files -->
                             <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -43,28 +44,7 @@
                                                             <a href="#">Mark All As Read</a>
                                                         </div>
                                                     </div>
-                                                    <div class="dropdown-list-content dropdown-list-message">
-                                                        <a href="#" class="dropdown-item dropdown-item-unread">
-                                                            <div class="dropdown-item-avatar">
-                                                                <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle">
-                                                                <div class="is-online"></div>
-                                                            </div>
-                                                            <div class="dropdown-item-desc">
-                                                                <b>Kusnaedi</b>
-                                                                <p>Hello, Bro!</p>
-                                                                <div class="time">10 Hours Ago</div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="dropdown-item dropdown-item-unread">
-                                                            <div class="dropdown-item-avatar">
-                                                                <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-2.png" class="rounded-circle">
-                                                            </div>
-                                                            <div class="dropdown-item-desc">
-                                                                <b>Dedik Sugiharto</b>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                                                                <div class="time">12 Hours Ago</div>
-                                                            </div>
-                                                        </a>
+                                                    <div class="dropdown-list-content dropdown-list-message">   
                                                         <a href="#" class="dropdown-item dropdown-item-unread">
                                                             <div class="dropdown-item-avatar">
                                                                 <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-3.png" class="rounded-circle">

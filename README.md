@@ -80,3 +80,6 @@ SC template public (lite) : https://www.youtube.com/redirect?event=video_descrip
 SC template public (full) : https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbG5ocnhERXhJdFVtb01nbXJ3WDBlZU4tTGx4d3xBQ3Jtc0trVFE0QWlISVgyeWdSejE1bHFIOWhPNjFwVEpOS2stRXhTdHotQWU1S0ZNUHpaaFE5b2lqamFhOEhmSnFuSzU0VG5GandndjBMT1Q1cDFsSDQ4YVh6OTVmMU5CbGtoSUhDc1l3MWtCN2ZIR3dQRUliMA&q=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Z2WMITOd1UzGiul3v0COivB81YKwFpSe%2F&v=Kre5kJIufhw
 
 E:\CI4\ci4-undangan\public\template>yarn install
+
+# Database Migrations
+https://codeigniter.com/user_guide/dbmgmt/migration.html#database-migrations

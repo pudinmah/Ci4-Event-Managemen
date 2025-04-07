@@ -3,13 +3,18 @@
 <?= $this->extend('layouts/default') ?>
 
 <?= $this->section('content') ?>
-    <section class="section">
-        <div class="section-header">
-            <h1>Blank Page</h1>
-        </div>
+<title>Home &mdash; yukNikah</title>
+<?= $this->endSection('content') ?>
 
-        <div class="section-body">
-            Halo Dunia
-        </div>
-    </section>
+<?= $this->section('content') ?>
+
+<section class="section">
+    <div class="section-header">
+        <h1>Blank Page</h1>
+    </div>
+
+    <div class="section-body">
+        Halo Dunia
+    </div>
+</section>
 <?= $this->endSection() ?>
