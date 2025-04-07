@@ -21,5 +21,7 @@ $routes->get('/', 'Home::index');
 // Group Gawe
 $routes->group('gawe', function ($routes) {
     $routes->get('', 'Gawe::index');
+    $routes->get('add', 'Gawe::create');
+    $routes->post('', 'Gawe::store');
     
 });

@@ -1,26 +1,25 @@
 <?= $this->extend('layouts/default') ?>
 
-
 <?= $this->section('title') ?>
-<title>Data Gawe &mdash; yukGawe</title>
+<title><?= $menu ?> &#124; <?= $title ?></title>
 <?= $this->endSection() ?>
-
 
 <?= $this->section('content') ?>
 <section class="section">
     <div class="section-header">
-        <h1><?=$judul?></h1>
+        <h1><?= $menu ?></h1>
         <div class="section-header-button">
-            <a href="<?= site_url('gawe/add') ?>" class="btn btn-primary">Add <?=$judul?></a>
+            <a href="<?= site_url('gawe/add') ?>" class="btn btn-primary">Add <?= $menu ?></a>
         </div>
     </div>
 
+    <?= $this->include('layouts/alert') ?>
 
     <div class="section-body">
 
         <div class="card">
             <div class="card-header">
-                <h4><?=$subjudul?></h4>
+                <h4><?= $submenu ?></h4>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-striped table-md" id="table1">
