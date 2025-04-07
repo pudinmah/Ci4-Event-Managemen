@@ -41,10 +41,14 @@
                                 <td><?= $value->info_gawe ?></td>
                                 <td class="text-center" style="width:15%">
                                     <a href="<?= site_url('gawe/edit/' . $value->id_gawe) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+
                                     <form action="<?= site_url('gawe/' . $value->id_gawe) ?>" method="post" class="d-inline" id="del-<?= $value->id_gawe ?>">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus Data?|Apakah Anda yakin?" data-confirm-yes="submitDel(<?= $value->id_gawe ?>)">
+                                        <button
+                                            class="btn btn-danger btn-sm"
+                                            data-confirm="Hapus Data <b class='text-danger'><?= $value->name_gawe ?></b> ?|Apakah Anda yakin?"
+                                            data-confirm-yes="submitDel(<?= $value->id_gawe ?>)">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -58,4 +62,10 @@
 
     </div>
 </section>
+
+<script>
+    function submitDel(id) {
+        document.getElementById('del-' + id).submit();
+    }
+</script>
 <?= $this->endSection() ?>

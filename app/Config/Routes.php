@@ -23,5 +23,8 @@ $routes->group('gawe', function ($routes) {
     $routes->get('', 'Gawe::index');
     $routes->get('add', 'Gawe::create');
     $routes->post('', 'Gawe::store');
-    
+    $routes->get('edit/(:num)', 'Gawe::edit/$1');
+    $routes->put('(:num)', 'Gawe::update/$1');
+    $routes->delete('(:num)', 'Gawe::delete/$1');
 });
+
