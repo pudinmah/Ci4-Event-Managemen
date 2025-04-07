@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 // Create Database
 // https://codeigniter.com/user_guide/dbmgmt/forge.html#id7
-$routes->get('create-db', function(){
+$routes->get('create-db', function () {
     $forge = \Config\Database::forge();
     if ($forge->createDatabase('ci4_db')) {
         echo 'Database created!';
@@ -18,4 +18,8 @@ $routes->get('create-db', function(){
 
 $routes->get('/', 'Home::index');
 
-$routes->get('gawe', 'Gawe::index');
+// Group Gawe
+$routes->group('gawe', function ($routes) {
+    $routes->get('', 'Gawe::index');
+    
+});
