@@ -38,5 +38,4 @@ $routes->group('gawe', function ($routes) {
 });
 
 // Presenter Routes*
-$routes->presenter('groups');
-
+$routes->presenter('groups', ['filter' => 'isLoggedIn']); //validasi filter dari route
