@@ -37,3 +37,6 @@ $routes->group('gawe', function ($routes) {
     $routes->delete('(:num)', 'Gawe::delete/$1');
 });
 
+// Presenter Routes*
+$routes->presenter('groups');
+
