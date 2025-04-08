@@ -47,5 +47,9 @@ $routes->group('groups', function ($routes) {
     $routes->delete('delete2/(:any)', 'Groups::delete2/$1'); //untuk hapus satu data
     $routes->delete('delete2', 'Groups::delete2'); //semua
 });
-// Presenter Routes*
+// Presenter groups*
 $routes->presenter('groups'); //validasi filter dari route
+
+
+// Resource contacts*
+$routes->resource('contacts');

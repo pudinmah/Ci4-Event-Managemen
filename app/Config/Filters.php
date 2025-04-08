@@ -114,6 +114,7 @@ class Filters extends BaseFilters
                 'home',
                 'gawe','gawe/*',
                 'groups','groups/*',
+                'filter','filter/*'
             ]
         ],
     ];
