@@ -88,7 +88,19 @@ class Contacts extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $contact = $this->contact->find($id);
+        if (is_object($contact)) {
+            $data = [
+                'menu' => 'Contacts',
+                'submenu' => 'Update Contact',
+                'title' => 'yukGawe',
+                'contact' => $contact,
+                'groups' => $this->group->findAll()
+            ];
+            return view('pages/contact/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -100,7 +112,13 @@ class Contacts extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+		$save = $this->contact->update($id, $data);
+		if(!$save) {
+			return redirect()->back()->withInput()->with('errors', $this->contact->errors());
+		} else {
+			return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Diupdate');
+		}
     }
 
     /**
