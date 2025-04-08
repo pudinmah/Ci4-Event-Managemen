@@ -65,7 +65,22 @@ class Groups extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $validate = $this->validate([
+            'name_group' => [
+                'rules'  => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Nama grup tidak boleh kosong',
+                    'min_length' => 'Nama grup minimal 3 karakter',
+                ],
+            ],
+        ]);
+        if (!$validate) {
+            return redirect()->back()->withInput();
+        }
+
+        $data = $this->request->getPost();
+        $this->model->insert($data);
+        return redirect()->to(site_url('groups'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -77,15 +92,23 @@ class Groups extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $data = [
-            'menu' => 'Groups',
-            'submenu' => 'Edit Groups',
-            'title' => 'yukGawe',
-            'group' => $this->model->where('id_group', $id)->first()
+        // Cek apakah data group dengan id tersebut ada
+        $group = $this->model->where('id_group', $id)->first();
 
-        ];
-        return view('pages/group/edit', $data);
+        if ($group) {
+            $data = [
+                'menu' => 'Groups',
+                'submenu' => 'Edit Groups',
+                'title' => 'yukGawe',
+                'group' => $group
+            ];
+            return view('pages/group/edit', $data);
+        } else {
+            // Jika data tidak ditemukan, tampilkan halaman 404
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Group dengan ID $id tidak ditemukan.");
+        }
     }
+
 
     /**
      * Process the updating, full or partial, of a specific resource object.
@@ -97,7 +120,22 @@ class Groups extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        $validate = $this->validate([
+            'name_group' => [
+                'rules'  => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Nama grup tidak boleh kosong',
+                    'min_length' => 'Nama grup minimal 3 karakter',
+                ],
+            ],
+        ]);
+        if (!$validate) {
+            return redirect()->back()->withInput();
+        }
+
+        $data = $this->request->getPost();
+        $this->model->update($id, $data);
+        return redirect()->to(site_url('groups'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
