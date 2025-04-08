@@ -113,12 +113,12 @@ class Contacts extends ResourceController
     public function update($id = null)
     {
         $data = $this->request->getPost();
-		$save = $this->contact->update($id, $data);
-		if(!$save) {
-			return redirect()->back()->withInput()->with('errors', $this->contact->errors());
-		} else {
-			return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Diupdate');
-		}
+        $save = $this->contact->update($id, $data);
+        if (!$save) {
+            return redirect()->back()->withInput()->with('errors', $this->contact->errors());
+        } else {
+            return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Diupdate');
+        }
     }
 
     /**
@@ -130,6 +130,7 @@ class Contacts extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->contact->delete($id);
+        return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Dihapus');
     }
 }

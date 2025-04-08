@@ -151,4 +151,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    function submitDel(id) {
+        document.getElementById('del-' + id).submit();
+    }
+</script>
+
 <?= $this->endSection() ?>
