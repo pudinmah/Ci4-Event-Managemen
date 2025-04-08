@@ -18,10 +18,4 @@
     </div>
 </section>
 
-<script>
-    function Logout() {
-        window.location.href = document.getElementById('logout').getAttribute('href');
-    }
-</script>
-
 <?= $this->endSection() ?>

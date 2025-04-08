@@ -14,6 +14,8 @@
                             <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/@fortawesome/fontawesome-free/css/all.css">
 
                             <!-- CSS Libraries -->
+                            <link rel="stylesheet" href="<?= base_url() ?>template/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+
 
                             <!-- Template CSS -->
                             <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
@@ -138,7 +140,7 @@
                                             </li>
                                             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                                     <img alt="image" src="<?= base_url() ?>template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                                                    <div class="d-sm-none d-lg-inline-block">Hi, <?=userLogin()->name_user?></div>
+                                                    <div class="d-sm-none d-lg-inline-block">Hi, <?= userLogin()->name_user ?></div>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <div class="dropdown-title">Logged in 5 min ago</div>
@@ -203,6 +205,11 @@
 
 
                             <!-- JS Libraies -->
+                            <script src="<?= base_url() ?>template/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+                            <script src="<?= base_url() ?>template/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+                            <script src="<?= base_url() ?>template/assets/js/stisla.js"></script>
+
 
                             <!-- Template JS File -->
                             <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
