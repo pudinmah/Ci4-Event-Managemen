@@ -159,6 +159,14 @@ class Groups extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        //
+        // Query Builder*
+        // $db = \Config\Database::connect();
+        // $db->table('groups')->where('id_group', $id)->delete();
+
+        // ORM bisa soft delete*
+        $this->model->where('id_group', $id)->delete();
+        // $this->model->delete($id);
+
+        return redirect()->to(site_url('groups'))->with('success', 'Data Berhasil Dihapus');
     }
 }
