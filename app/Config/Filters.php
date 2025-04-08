@@ -112,9 +112,8 @@ class Filters extends BaseFilters
             'before' =>
             [
                 'home',
-                'gawe',
-                'gawe/*',
-                'groups/*',
+                'gawe','gawe/*',
+                'groups','groups/*',
             ]
         ],
     ];

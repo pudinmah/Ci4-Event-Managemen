@@ -169,4 +169,54 @@ class Groups extends ResourcePresenter
 
         return redirect()->to(site_url('groups'))->with('success', 'Data Berhasil Dihapus');
     }
+
+    public function trash()
+    {
+        $data = [
+            'menu' => 'Data Groups',
+            'submenu' => 'Group Trash',
+            'title' => 'yukGawe',
+            'groups' => $this->model->onlyDeleted()->findAll()
+        ];
+        return view('pages/group/trash', $data);
+    }
+
+    public function restore($id = null)
+    {
+        $this->db = \Config\Database::connect();
+
+        $builder = $this->db->table('groups');
+
+        if ($id !== null) {
+            // Restore data tertentu berdasarkan ID
+            $builder->set('deleted_at', null, true)
+                ->where('id_group', $id)
+                ->update();
+        } else {
+            // Restore semua data yang sudah dihapus (soft delete)
+            $builder->set('deleted_at', null, true)
+                ->where('deleted_at IS NOT NULL', null, false)
+                ->update();
+        }
+
+        if ($this->db->affectedRows() > 0) {
+            return redirect()->to(site_url('groups'))->with('success', 'Data berhasil direstore');
+        }
+
+        return redirect()->to(site_url('groups'))->with('warning', 'Tidak ada data yang direstore');
+    }
+
+
+    public function delete2($id = null)
+    {
+        if ($id !== null) {
+            // Delete permanent data by ID
+            $this->model->delete($id, true);
+            return redirect()->to(site_url('groups/trash'))->with('success', 'Data berhasil dihapus permanen');
+        }
+
+        // Purge semua data terhapus
+        $this->model->purgeDeleted();
+        return redirect()->to(site_url('groups/trash'))->with('success', 'Seluruh data trash berhasil dihapus permanen');
+    }
 }
