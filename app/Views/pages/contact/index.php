@@ -84,7 +84,32 @@
                         <td>Action</td>
                     </thead>
                     <tbody>
-
+                        <?php
+                        // print_r($contacts);
+                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        $no = 1 + (10 * ($page - 1));
+                        foreach ($contacts as $key => $value) : ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $value->name_contact ?></td>
+                                <td><?= $value->name_alias ?></td>
+                                <td><?= $value->phone ?></td>
+                                <td><?= $value->email ?></td>
+                                <td><?= $value->address ?></td>
+                                <td><?= $value->info_contact ?></td>
+                                <td><?= $value->name_group ?></td>
+                                <td class="text-center" style="width:15%">
+                                    <a href="<?= site_url('contacts/' . $value->id_contact . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <form action="<?= site_url('contacts/' . $value->id_contact) ?>" method="post" class="d-inline" id="del-<?= $value->id_contact ?>">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus Data?|Apakah Anda yakin?" data-confirm-yes="submitDel(<?= $value->id_contact ?>)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <div class="float-left">
@@ -92,7 +117,7 @@
                 </div>
                 <!-- pagition -->
                 <div class="float-right">
-                    
+
                 </div>
             </div>
         </div>

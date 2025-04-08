@@ -2,12 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\ContactModel;
+use App\Models\GroupModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
 class Contacts extends ResourceController
 {
     protected $helpers = ['custom'];
+
+
+    function __construct()
+    {
+        $this->group = new GroupModel();
+        $this->contact = new ContactModel();
+    }
 
     /**
      * Return an array of resource objects, themselves in array format.
@@ -20,6 +29,7 @@ class Contacts extends ResourceController
             'menu' => 'Contacts',
             'submenu' => 'Data Kontak Saya',
             'title' => 'yukGawe',
+            'contacts' => $this->contact->getAll()
         ];
 
         return view('pages/contact/index', $data);
@@ -44,7 +54,13 @@ class Contacts extends ResourceController
      */
     public function new()
     {
-		return view('pages/contact/new');
+        $data = [
+            'menu' => 'Contacts',
+            'submenu' => 'Data Kontak Saya',
+            'title' => 'yukGawe',
+            'groups' => $this->group->findAll()
+        ];
+        return view('pages/contact/new', $data);
     }
 
     /**
