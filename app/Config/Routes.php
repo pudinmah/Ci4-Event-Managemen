@@ -53,4 +53,5 @@ $routes->presenter('groups'); //validasi filter dari route
 
 // Resource contacts*
 $routes->get('contacts/export', 'Contacts::export'); //harus di atas resource
+$routes->post('contacts/import', 'Contacts::import');
 $routes->resource('contacts');

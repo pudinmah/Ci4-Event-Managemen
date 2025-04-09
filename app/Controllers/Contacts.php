@@ -232,4 +232,55 @@ class Contacts extends ResourceController
         $writer->save('php://output');
         exit();
     }
+
+
+    // https://phpspreadsheet.readthedocs.io/en/latest/topics/reading-and-writing-to-file/
+    public function import()
+    {
+        // Ambil file Excel yang diupload
+        $file = $this->request->getFile('file_excel');
+
+        // Cek ekstensi file (harus xls atau xlsx)
+        $extension = $file->getClientExtension();
+        if ($extension == 'xlsx' || $extension == 'xls') {
+
+            // Tentukan reader yang sesuai berdasarkan ekstensi
+            if ($extension == 'xls') {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            // Baca file Excel dan konversi ke array
+            $spreadsheet = $reader->load($file);
+            $contacts = $spreadsheet->getActiveSheet()->toArray();
+
+            // Looping data dari baris kedua
+            foreach ($contacts as $key => $value) {
+                if ($key == 0) {
+                    continue; // Lewati baris header
+                }
+
+                // Siapkan data yang akan disimpan ke database
+                $data = [
+                    'name_contact' => $value[1],
+                    'name_alias' => $value[2],
+                    'phone' => $value[3],
+                    'email' => $value[4],
+                    'address' => $value[5],
+                    'info_contact' => $value[6],
+                    'id_group' => 1, // Default group
+                ];
+
+                // Simpan data ke tabel contacts
+                $this->contact->insert($data);
+            }
+
+            // Redirect dengan pesan sukses
+            return redirect()->back()->with('success', 'Data Excel Berhasil Diimport');
+        } else {
+            // Jika format file tidak sesuai
+            return redirect()->back()->with('error', 'Format File Tidak Sesuai');
+        }
+    }
 }
