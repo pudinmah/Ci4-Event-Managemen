@@ -46,6 +46,7 @@ class Gawe extends BaseController
 
     public function store()
     {
+        // https://codeigniter.com/user_guide/libraries/uploaded_files.html#id6
         $validate = $this->validate([
             'name_gawe' => [
                 'rules'  => 'required|min_length[3]',
@@ -60,17 +61,53 @@ class Gawe extends BaseController
                     'required' => 'Tanggal gawe tidak boleh kosong',
                 ],
             ],
+            'place_gawe' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tempat gawe tidak boleh kosong',
+                ],
+            ],
+            'image_gawe' => [
+                'label' => 'Image file',
+                'rules' => [
+                    // 'uploaded[image_gawe]', // (Opsional) Wajib upload jika baris ini diaktifkan
+                    'is_image[image_gawe]', // File harus bertipe gambar
+                    'mime_in[image_gawe,image/jpg,image/jpeg,image/gif,image/png,image/webp]', // Format gambar yang diperbolehkan
+                    'max_size[image_gawe,100]', // Ukuran maksimal file 100KB
+                    'max_dims[image_gawe,1024,768]', // Dimensi maksimal gambar 1024x768 piksel
+                ],
+                'errors' => [
+                    'uploaded'  => '{field} wajib diunggah.',
+                    'is_image'  => '{field} harus berupa gambar yang valid.',
+                    'mime_in'   => '{field} harus dalam format jpg, jpeg, gif, png, atau webp.',
+                    'max_size'  => '{field} tidak boleh lebih dari 100KB.',
+                    'max_dims'  => '{field} maksimal ukuran 1024x768 piksel.',
+                ],
+            ],
+
+
         ]);
         if (!$validate) {
             return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data');
         }
 
-        // cara 2 : name spesifik
-        $data = [
-            'name_gawe' => $this->request->getPost('name_gawe'),
-            'date_gawe' => $this->request->getPost('date_gawe'),
-            'info_gawe' => $this->request->getPost('info_gawe'),
-        ];
+        // cara 1 : name sama
+        $data = $this->request->getPost();
+
+        if ($data['end_gawe'] == '') {
+            $data['end_gawe'] = null;
+        }
+
+        $img = $this->request->getFile('image_gawe');
+        if ($img != '') {
+            $img->move(ROOTPATH . 'public/uploads/gawe/', $img->getRandomName());
+            $data['image_gawe'] = $img->getName();
+            if (!$img->hasMoved()) {
+                // $filepath = WRITEPATH . 'uploads/' . $img->store();
+                // $data = ['uploaded_fileinfo' => new File($filepath)];
+                return redirect()->back()->withInput();
+            }
+        }
 
         $this->db->table('gawe')->insert($data);
 
@@ -78,6 +115,7 @@ class Gawe extends BaseController
             return redirect()->to(site_url('gawe'))->with('success', 'Data Berhasil Disimpan');
         }
     }
+
 
 
     public function edit($id = null)
@@ -122,7 +160,7 @@ class Gawe extends BaseController
         if (!$validate) {
             return redirect()->back()->withInput()->with('error', 'Gagal mengupdate data');
         }
-        
+
         // cara 2 : name spesifik
         $data = [
             'name_gawe' => $this->request->getPost('name_gawe'),
@@ -130,7 +168,7 @@ class Gawe extends BaseController
             'info_gawe' => $this->request->getPost('info_gawe'),
         ];
         // unset($data['_method']);
-        
+
         $this->db->table('gawe')->where(['id_gawe' => $id])->update($data);
         return redirect()->to(site_url('gawe'))->with('success', 'Data Berhasil Diupdate');
     }
