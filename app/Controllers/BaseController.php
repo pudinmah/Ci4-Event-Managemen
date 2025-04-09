@@ -35,7 +35,8 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = ['custom'];
+    // https://codeigniter.com/user_guide/helpers/form_helper.html#validation_errors
+    protected $helpers = ['custom', 'form'];
 
     /**
      * Be sure to declare properties for any property fetch you initialized.

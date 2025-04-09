@@ -16,15 +16,14 @@
     <div class="section-body">
 
         <?= $this->include('layouts/alert') ?>
-        
+
         <div class="card">
 
             <div class="card-header">
                 <h4><?= $submenu ?></h4>
             </div>
             <div class="card-body col-md-6">
-
-
+                <?php $errors = validation_errors(); ?>
                 <form action="<?= site_url('gawe') ?>" method="post" autocomplete="off">
                     <?= csrf_field() ?>
                     <div class="form-group">

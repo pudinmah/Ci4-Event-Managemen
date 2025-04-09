@@ -21,7 +21,7 @@
             </div>
             <div class="card-body col-md-6">
 
-                <?php $validation = \Config\Services::validation(); ?>
+                <?php $errors = validation_errors(); ?>
 
                 <form action="<?= site_url('gawe/' . $gawe->id_gawe) ?>" method="post" autocomplete="off">
                     <?= csrf_field() ?>
