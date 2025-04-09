@@ -25,15 +25,24 @@ class Contacts extends ResourceController
      */
     public function index()
     {
+        $keyword = $this->request->getGet('keyword');
+        $limit = $this->request->getGet('limit') ?? 4; // default 10 jika tidak di-set
+
+        $pagination = $this->contact->getPaginated($limit, $keyword);
+
         $data = [
             'menu' => 'Contacts',
             'submenu' => 'Data Kontak Saya',
             'title' => 'yukGawe',
-            'contacts' => $this->contact->getAll()
+            'contacts' => $pagination['contacts'],
+            'pager' => $pagination['pager'],
+            'limit' => $limit, // untuk menjaga nilai limit di form
+            'keyword' => $keyword, // untuk menjaga keyword di form
         ];
 
         return view('pages/contact/index', $data);
     }
+
 
     /**
      * Return the properties of a resource object.

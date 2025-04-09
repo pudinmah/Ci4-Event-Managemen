@@ -1,13 +1,13 @@
 <?= $this->extend('layouts/default') ?>
 
 <?= $this->section('title') ?>
-<title><?= $menu ?> &#124; <?= $title ?></title>
+<title>Data Contacts &mdash; yukGawe</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
     <div class="section-header">
-        <h1><?= $menu ?></h1>
+        <h1>Contacts</h1>
         <div class="section-header-button">
             <a href="<?= site_url('contacts/new') ?>" class="btn btn-primary">Add New</a>
         </div>
@@ -19,33 +19,34 @@
 
         <div class="card">
             <div class="card-header">
-                <h4><?= $submenu ?></h4>
+                <h4>Data Kontak Saya</h4>
             </div>
             <div class="card-header">
-                <form action="" method="get" autocomplete="off">
-                    <div class="float-left">
-                        <?php $request = \Config\Services::request(); ?>
-                        <input type="text" name="keyword" value="<?= $request->getGet('keyword') ?>" class="form-control" style="width:155pt;" placeholder="Keyword pencarian">
-                    </div>
-                    <div class="float-right ml-2">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                <form action="" method="get" autocomplete="off" class="d-flex flex-wrap justify-content-between align-items-center">
 
+                    <div class="input-group" style="width: 250px;">
+                        <?php $request = \Config\Services::request(); ?>
+                        <input type="text" name="keyword" value="<?= $request->getGet('keyword') ?>" class="form-control form-control-lg" placeholder="Keyword pencarian">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="btn-group ml-2">
                         <?php
                         $request = \Config\Services::request();
                         $keyword = $request->getGet('keyword');
-                        if ($keyword != '') {
-                            $param = "?keyword=" . $keyword;
-                        } else {
-                            $param = "";
-                        }
+                        $param = $keyword != '' ? "?keyword=" . $keyword : "";
                         ?>
-                        <a href="<?= site_url('contacts/export' . $param) ?>" class="btn btn-primary">
-                            <i class="fas fa-file-download"></i> Export Excel
+                        <a href="<?= site_url('contacts/export' . $param) ?>" class="btn btn-primary btn-lg">
+                            <i class="fas fa-file-download mr-1"></i> Export Excel
                         </a>
 
                         <div class="dropdown d-inline">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-file-upload"></i> Import Excel
+                            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-file-upload mr-1"></i> Import Excel
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item has-icon" href="<?= base_url('contacts-example-import.xlsx') ?>">
@@ -59,6 +60,7 @@
                     </div>
                 </form>
             </div>
+
             <div class="card-body table-responsive">
                 <table class="table table-striped table-md">
                     <thead>
@@ -73,21 +75,11 @@
                             <th>Grup</th>
                             <th>Action</th>
                         </tr>
-                        <td>1</td>
-                        <td>Nama Kontak</td>
-                        <td>Alias</td>
-                        <td>Telepon</td>
-                        <td>Email</td>
-                        <td>Alamat</td>
-                        <td>Info</td>
-                        <td>Grup</td>
-                        <td>Action</td>
                     </thead>
                     <tbody>
                         <?php
-                        // print_r($contacts);
                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                        $no = 1 + (10 * ($page - 1));
+                        $no = 1 + ($limit * ($page - 1));
                         foreach ($contacts as $key => $value) : ?>
                             <tr>
                                 <td><?= $no++ ?></td>
@@ -112,12 +104,14 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <!-- Informasi jumlah data ditampilkan -->
                 <div class="float-left">
-                    <i>Showing entries</i>
+                    <i>Showing <?= empty($contacts) ? 0 : 1 + ($limit * ($page - 1)) ?> to <?= $no - 1 ?> of <?= $pager->getTotal() ?> entries</i>
                 </div>
-                <!-- pagition -->
-                <div class="float-right">
 
+                <!-- Tampilkan navigasi pagination -->
+                <div class="float-right">
+                    <?= $pager->only(['keyword', 'limit'])->links('default', 'pagination') ?>
                 </div>
             </div>
         </div>
@@ -151,5 +145,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>
