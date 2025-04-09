@@ -2,10 +2,14 @@
 
 namespace App\Controllers;
 
+
+
 use App\Models\ContactModel;
 use App\Models\GroupModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Contacts extends ResourceController
 {
@@ -141,5 +145,91 @@ class Contacts extends ResourceController
     {
         $this->contact->delete($id);
         return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Dihapus');
+    }
+
+    // https://phpspreadsheet.readthedocs.io/en/latest/
+    public function export()
+    {
+        // Menentukan nama file berdasarkan tanggal
+        $filename = "contacts-" . date('ymd') . ".xlsx";
+
+        // Ambil keyword dari parameter GET untuk pencarian
+        $keyword = $this->request->getGet('keyword');
+
+        // Query data dari database dengan join ke tabel groups
+        $db = \Config\Database::connect();
+        $builder = $db->table('contacts');
+        $builder->join('groups', 'groups.id_group = contacts.id_group');
+
+        // Jika ada keyword, lakukan filter data berdasarkan beberapa kolom
+        if ($keyword != '') {
+            $builder->like('name_contact', $keyword);
+            $builder->orLike('name_alias', $keyword);
+            $builder->orLike('address', $keyword);
+            $builder->orLike('phone', $keyword);
+            $builder->orLike('email', $keyword);
+            $builder->orLike('name_group', $keyword);
+            $filename = "contacts-filter-" . date('ymd') . ".xlsx";
+        }
+
+        // Jalankan query dan ambil hasil
+        $query = $builder->get();
+        $contacts = $query->getResult();
+
+        // Buat file Excel dan set header kolom
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Nama');
+        $sheet->setCellValue('C1', 'Alias');
+        $sheet->setCellValue('D1', 'Telepon');
+        $sheet->setCellValue('E1', 'Email');
+        $sheet->setCellValue('F1', 'Alamat');
+        $sheet->setCellValue('G1', 'Info');
+
+        // Isi data kontak ke dalam sheet Excel
+        $column = 2;
+        foreach ($contacts as $key => $value) {
+            $sheet->setCellValue('A' . $column, ($column - 1));
+            $sheet->setCellValue('B' . $column, $value->name_contact);
+            $sheet->setCellValue('C' . $column, $value->name_alias);
+            $sheet->setCellValue('D' . $column, $value->phone);
+            $sheet->setCellValue('E' . $column, $value->email);
+            $sheet->setCellValue('F' . $column, $value->address);
+            $sheet->setCellValue('G' . $column, $value->info_contact);
+            $column++;
+        }
+
+        // Atur style: header bold, background kuning, border tabel
+        $sheet->getStyle('A1:G1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:G1')->getFill()
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFFFF00');
+        $styleArray = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ];
+        $sheet->getStyle('A1:G' . ($column - 1))->applyFromArray($styleArray);
+
+        // Set lebar kolom otomatis
+        $sheet->getColumnDimension('A')->setAutoSize(true);
+        $sheet->getColumnDimension('B')->setAutoSize(true);
+        $sheet->getColumnDimension('C')->setAutoSize(true);
+        $sheet->getColumnDimension('D')->setAutoSize(true);
+        $sheet->getColumnDimension('E')->setAutoSize(true);
+        $sheet->getColumnDimension('F')->setAutoSize(true);
+        $sheet->getColumnDimension('G')->setAutoSize(true);
+
+        // Kirim file ke browser untuk didownload sebagai Excel
+        $writer = new Xlsx($spreadsheet);
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $filename);
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit();
     }
 }

@@ -35,11 +35,14 @@
                     </div>
 
                     <div class="btn-group ml-2">
+
                         <?php
+                        // Export Data Excel Sesuai Filter
                         $request = \Config\Services::request();
                         $keyword = $request->getGet('keyword');
                         $param = $keyword != '' ? "?keyword=" . $keyword : "";
                         ?>
+
                         <a href="<?= site_url('contacts/export' . $param) ?>" class="btn btn-primary btn-lg">
                             <i class="fas fa-file-download mr-1"></i> Export Excel
                         </a>
