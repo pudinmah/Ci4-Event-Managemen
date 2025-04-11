@@ -48,10 +48,16 @@ $routes->group('groups', function ($routes) {
     $routes->delete('delete2', 'Groups::delete2'); //semua
 });
 // Presenter groups*
-$routes->presenter('groups'); //validasi filter dari route
+$routes->presenter('groups');
 
 
 // Resource contacts*
 $routes->get('contacts/export', 'Contacts::export'); //harus di atas resource
 $routes->post('contacts/import', 'Contacts::import');
 $routes->resource('contacts');
+
+$routes->resource('moneyin', [
+    'controller' => 'MoneyIn',
+    'filter' => 'isLoggedIn',
+    'only' => ['index', 'create', 'update', 'delete'],
+]);

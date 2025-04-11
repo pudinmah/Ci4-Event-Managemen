@@ -13,6 +13,13 @@
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-envelope"></i> <span>Undangan</span></a>
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="layout-default.html">Saya Mengundang</a></li>
-        <li><a class="nav-link" href="layout-transparent.html">Saya Diundang</a></li>
+        <li><a class="nav-link text-light" href="layout-transparent.html">Saya Diundang</a></li>
+    </ul>
+</li>
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-envelope"></i> <span>Uang</span></a>
+    <ul class="dropdown-menu">
+        <li><a class="nav-link" href="<?=site_url('moneyin')?>">Uang Masuk</a></li>
+        <li><a class="nav-link text-light" href="layout-transparent.html">Uang Keluar</a></li>
     </ul>
 </li>

@@ -92,5 +92,5 @@ class Autoload extends AutoloadConfig
      */
 
     //  https://codeigniter.com/user_guide/helpers/form_helper.html#validation_errors
-    public $helpers = ['form'];
+    public $helpers = ['form', 'custom'];
 }

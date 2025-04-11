@@ -13,8 +13,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Contacts extends ResourceController
 {
-    protected $helpers = ['custom'];
-
 
     function __construct()
     {

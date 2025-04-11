@@ -9,7 +9,7 @@
     <div class="section-header">
         <h1><?= $menu ?></h1>
         <div class="section-header-button">
-            <a href="<?= site_url('gawe/create') ?>" class="btn btn-primary">Tambah</a>
+            <a href="<?= site_url('gawe/add') ?>" class="btn btn-primary">Tambah</a>
         </div>
     </div>
 
