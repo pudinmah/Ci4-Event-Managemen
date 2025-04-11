@@ -32,14 +32,7 @@
                     </div>
 
                     <div class="form-group">
-
-                        <?= $this->section('title') ?>
-                        <title><?= $menu ?> &#124; <?= $title ?></title>
-                        <?= $this->endSection() ?>
-
-
                         <label>Judul <?= $this->extend('layouts/default') ?></label>
-
                         <input type="text" name="title_gawe" value="<?= old('title_gawe') ?>" class="form-control <?= isset($errors['title_gawe']) ? 'is-invalid' : null ?>">
                         <div class="invalid-feedback"><?= $errors['title_gawe'] ?? null ?></div>
                     </div>
